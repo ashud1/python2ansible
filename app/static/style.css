@@ -1,0 +1,94 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+div {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: rgb(46, 200, 102);
+}
+
+.allLables {
+  font-size: 20px;
+}
+
+.pageHeaderdiv {
+  background-color: rgb(18, 20, 24);
+  -webkit-text-fill-color: #ffff;
+  font-size: 40px;
+  height: 100px;
+  text-align: -webkit-center;
+  border-style: solid;
+  /* Flex box */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  /* justify-content: left; */
+  align-items: center;
+  /* align-content: flex-start; */
+}
+
+.uploadfilediv {
+  padding: 10px;
+  border-style: solid;
+}
+
+.validateFilediv {
+  padding: 10px;
+  border-style: solid;
+}
+.txtAreadiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /* align-content: flex-start; */
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  background-color: rgb(247, 248, 253);
+}
+.textareabox {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  height: 908px;
+  width: 830px;
+  --monaco-monospace-font: "SF Mono", Monaco, Menlo, Consolas, "Ubuntu Mono",
+    "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace;
+}
+
+.txtAreadiv textarea {
+  flex: 1;
+  font-size: large;
+  max-width: 910px;
+  max-height: 910px;
+}
+.textareabox pre {
+  flex: 1;
+  max-width: 900px;
+  max-height: 908px;
+}
+#obox {
+  flex: 1;
+  max-width: 900px;
+  max-height: 1000px;
+  font-family: "Fira code", monospace;
+  /* background: #1e1e1e; */
+  text-wrap: wrap;
+  color: #c5c5c5;
+  background: #1e1e1e;
+  color: #c5c5c5;
+  padding: 15px;
+  border-radius: 6px;
+  font-family: "Fira Code", monospace;
+  white-space: pre-wrap;
+}
+
+.txtAreadiv div {
+  background-color: inherit;
+}
+.dynamic-textbox {
+  margin-right: 30px;
+}
+
+.errordiv {
+  background-color: white;
+}

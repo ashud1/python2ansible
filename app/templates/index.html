@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>exe ansible</title>
+    <link
+      href="{{ url_for('static', filename='style.css') }} "
+      rel="stylesheet"
+    />
+    <script src="{{ url_for('static', filename='upload.js') }}"></script>
+    <script>
+      let j={{ fields|length }};
+    </script>
+  </head>
+  <body>
+    <div class="pageHeaderdiv">Run your ansible script</div>
+    <div class="uploadfilediv">
+      <label for="fbox" class="allLables">Select Yaml file : </label>
+      <input type="file" accept=".yml,.YML" id="fbox" class="fileExplorer" />
+      <div>
+        <label for="upload" class="allLables">Upload Yaml file : </label>
+        <button onclick="fileUpload()" type="button" id="upload">Upload</button>
+      </div>
+    </div>
+    <form
+      class="uploadFileForm"
+      method="POST"
+      action="/run"
+      id="uploadFileForm"
+      name="uploadFileForm"
+    >
+      <div class="validateFilediv" name="validateFilediv" id="validateFilediv">
+        <label
+          for="checkboxHost"
+          name="checkboxHost-lable"
+          id="checkboxHost-lable"
+          >Does Contains Host?</label
+        >
+        <input type="checkbox" id="checkboxHost" name="checkboxHost" />
+        <div class="addParamButton" name="addParam" id="addParam">
+          <label for="add" name="validate">Add parameters : </label>
+          <button onclick="addParam()" type="button" id="add" name="add">
+            Add parameters
+          </button>
+        </div>
+        <div id="paraArea" class="paraAreadiv" name="paraArea">
+          {% for key,value in fields.items() %} {{ value|safe }} {% endfor %}
+        </div>
+        <div class="rundiv" name="rundiv" id="rundiv"></div>
+        <button type="submit" id="run" name="run">Run</button>
+      </div>
+      <div class="txtAreadiv">
+        <textarea class="textareabox" id="ibox" name="ibox">
+{{ name }}</textarea
+        >
+        <div>
+          <!-- <pre>Output</pre> -->
+          <pre>{{ error_desc }}</pre>
+          {% if validationResult %}
+          <pre id="obox" name="obox">{{ validationResult }}</pre>
+          {% endif %}
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
