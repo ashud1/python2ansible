@@ -1,0 +1,6 @@
+---
+- name: Testing
+  hosts: localhost
+  tasks:
+    - name: run child task
+      include_tasks: user-playbook.yml

@@ -1,0 +1,3 @@
+- debug:
+    msg: This is sample playbook
+  name: show
