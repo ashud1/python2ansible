@@ -15,8 +15,13 @@ function fileUpload() {
   } else {
     // console.log(file.name);
     // ibox.value = "uploaded file content";
-    ibox.value = "";
-    obox.value = "";
+
+    if (ibox != null) {
+      ibox.value = "";
+    }
+    if (obox != null) {
+      obox.value = "";
+    }
     file
       .text()
       .then((text) => {
