@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>exe ansible</title>
+    <title>Python2Ansible</title>
     <link
       href="{{ url_for('static', filename='style.css') }} "
       rel="stylesheet"
@@ -35,7 +35,12 @@
           id="checkboxHost-lable"
           >Does Contains Host?</label
         >
-        <input type="checkbox" id="checkboxHost" name="checkboxHost" />
+        <input
+          type="checkbox"
+          id="checkboxHost"
+          name="checkboxHost"
+          checked="{{checked}}"
+        />
         <div class="addParamButton" name="addParam" id="addParam">
           <label for="add" name="validate">Add parameters : </label>
           <button onclick="addParam()" type="button" id="add" name="add">

@@ -8,6 +8,7 @@ import json
 
 # from app_routes import conf
 
+
 def getParam(dict):
     o_dict={}
     use_dict={}
@@ -64,23 +65,23 @@ def runCmd(checked,ansible):
     if checked:
         file_path = os.path.join(app.root_path, "playbooks", "user-playbook.yml")
         makecmd="ansible-playbook"+" "+file_path+" "+"--extra-vars "+ "\""+str(ansible)+"\""
-        print(makecmd)
+        #print(makecmd)
         #result=subprocess.run(makecmd,capture_output=True,text=True,shell=True)
         result=subprocess.Popen( makecmd ,stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True,text=True)
     else:
         file_path = os.path.join(app.root_path, "playbooks", "master-playbook.yml")
         makecmd="ansible-playbook"+" "+file_path+" "+"--extra-vars "+ "\""+str(ansible)+"\""
-        print(makecmd)
+        #print(makecmd)
         #result=subprocess.run( makecmd ,capture_output=True,text=True,shell=True)
         result=subprocess.Popen( makecmd ,stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True,text=True)
 
     stdout, stderr = result.communicate()
 
-    print("Exit code:", result.returncode)
+    #print("Exit code:", result.returncode)
     # print("output:\n", result.stdout)
     # print("Errors:\n", result.stderr)
-    print("output:\n", stdout)
-    print("Errors:\n", stderr)
+    #print("output:\n", stdout)
+    #print("Errors:\n", stderr)
     if result.returncode==0:
         out["returnCode"]=True
         out["returnMsg"]=stdout
@@ -105,13 +106,13 @@ def result():
     output=request.form.to_dict()
     print(output)
     e=getParam(output)
-    print("###############")
-    print(e)
+    #print("###############")
+    #print(e)
     html=e["html"]
     ansible=e["ansible"]
-    print(html)
+    #print(html)
     ansible=e["ansible"]
-    print("****************")
+    #print("****************")
     # print(output)
     if "ibox" in output:
         name=output["ibox"]
@@ -123,12 +124,13 @@ def result():
         out=return_dict["returnMsg"]
         # print(err)
         # print(out)
+        #print(f"checked {checked}")
         if err:
             runOutput=runCmd(checked,ansible)
-            return render_template("index.html",name=name,validationResult=runOutput["returnMsg"],fields=html)
+            return render_template("index.html",name=name,validationResult=runOutput["returnMsg"],fields=html,checked=checked)
         else:
             print("Error in yml file")
-            return render_template("index.html",name=name,error_desc=out,fields=html)
+            return render_template("index.html",name=name,error_desc=out,fields=html,checked=checked)
     else:
         error_desc="Missing Input Box in Post Request"
         return render_template("index.html",name="",error_desc=error_desc,fields=html)
