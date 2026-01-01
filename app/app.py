@@ -6,9 +6,6 @@ import yaml
 import traceback
 import json
 
-# from app_routes import conf
-
-
 def getParam(dict):
     o_dict={}
     use_dict={}
@@ -19,7 +16,6 @@ def getParam(dict):
     template={}
     for keys,value in dict.items():
         if keys.startswith("dynamic-textbox"):
-            
             returnCode=True
             # print(f"keys {keys} values {value}")
             if keys.startswith("dynamic-textbox-Para"):
@@ -41,7 +37,6 @@ def getParam(dict):
     g_dict["html"]=template
     g_dict["ansible"]=use_dict
     return g_dict
-
 
 def makeTempFile(txt):
     out={"returnCode":"","returnMsg":""}
@@ -98,21 +93,21 @@ app=Flask(__name__)
 @app.route("/home")
 def home():
     # return "Hello, from Flask"+sys.platform
-    return render_template("index.html",fields={})
+    return render_template("index.html",fields={},checked=False)
 
 @app.route("/run",methods=["POST","GET"])
 def result():
     # return "Hello, from Flask"+sys.platform
     output=request.form.to_dict()
-    print(output)
+    # print(output)
     e=getParam(output)
-    #print("###############")
-    #print(e)
+    # print("###############")
+    # print(e)
     html=e["html"]
     ansible=e["ansible"]
     #print(html)
     ansible=e["ansible"]
-    #print("****************")
+    # print("****************")
     # print(output)
     if "ibox" in output:
         name=output["ibox"]
@@ -124,7 +119,7 @@ def result():
         out=return_dict["returnMsg"]
         # print(err)
         # print(out)
-        #print(f"checked {checked}")
+        # print(f"checked {checked}")
         if err:
             runOutput=runCmd(checked,ansible)
             return render_template("index.html",name=name,validationResult=runOutput["returnMsg"],fields=html,checked=checked)

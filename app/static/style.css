@@ -2,6 +2,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   /* padding: 0px; */
   margin: 5px;
+  /* background-color: rgb(2, 2, 2); */
 }
 div {
   margin-top: 20px;
@@ -42,12 +43,12 @@ button {
 
 .pageHeaderdiv {
   padding: 0px;
-  background-color: rgb(18, 20, 24);
+  background-color: rgb(2, 2, 2);
   -webkit-text-fill-color: #ffff;
   font-size: 40px;
   height: 50px;
   text-align: -webkit-center;
-  border-style: solid;
+  /* border-style: solid; */
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;

@@ -1,38 +1,6 @@
 - debug:
     msg: This is sample playbook
   name: show
-- name: ping
-  ping: null
 - debug:
-    msg: '{{ db_names_lkp }}'
+    msg: '{{ myvar }}'
   name: show
-- name: convertTodict
-  set_fact:
-    my_dict: '{{ db_names_lkp | from_json }}'
-- debug:
-    var: my_dict
-  name: show2
-- name: var1
-  set_fact:
-    na: '1'
-- name: getthevalue
-  set_fact:
-    var: '{{  my_dict[na] }}'
-- debug:
-    msg: '{{ var }}'
-  name: showvariabe
-- name: assign
-  set_fact:
-    db_name: isirp
-- debug:
-    msg: '{{ db_name }}'
-  name: show3
-- debug:
-    msg: '{{ lookup(''vars'',db_name) }}'
-  name: show4
-- name: show4
-  set_fact:
-    fullname: '{{na}}{{ lookup(''vars'',db_name) }}'
-- debug:
-    msg: '{{ fullname }}'
-  name: show5
