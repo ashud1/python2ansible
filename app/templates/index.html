@@ -35,12 +35,19 @@
           id="checkboxHost-lable"
           >Does Contains Host?</label
         >
+        {% if checked %}
         <input
           type="checkbox"
           id="checkboxHost"
           name="checkboxHost"
-          checked="{{checked}}"
+          checked="on"
         />
+        {% else %}
+
+        <input type="checkbox" id="checkboxHost" name="checkboxHost" />
+
+        {% endif %}
+
         <div class="addParamButton" name="addParam" id="addParam">
           <label for="add" name="validate">Add parameters : </label>
           <button onclick="addParam()" type="button" id="add" name="add">
